@@ -19,8 +19,8 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-              <li><a href="{{ route('testpages.index')}}">测试管理</a></li>
-              <li><a href="#"></a></li>
+              <li class="{{ active_class(if_route('testpages.index')) }}"><a href="{{ route('testpages.index')}}">测试管理</a></li>
+              <li class="{{ active_class(if_route('questions.index')) }}"><a href="{{ route('questions.index')}}">试题管理</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->

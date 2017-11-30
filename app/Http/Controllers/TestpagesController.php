@@ -45,9 +45,9 @@ class TestpagesController extends Controller
     return redirect()->route('testpages.index')->with('message', '更新成功！');
   }
 
-  public function destroy(Testpages $testpages)
+  public function destroy(Testpages $testpage)
   {
-    $testpages->delete();
+    $testpage->delete();
 
     return redirect()->route('testpages.index')->with('message', '成功删除！');
   }

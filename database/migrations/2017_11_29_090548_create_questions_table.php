@@ -16,9 +16,9 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('userid');
-            $table->integer('type')->default(1)->comment('问题类型：1、单选；2、填空；3、多选；4、文章');
+            $table->string('type')->default('radio')->comment('问题类型：1、单选；2、填空；3、多选；4、文章');
             $table->string('title')->comment('问题内容');
-            $table->string('content')->nullable()->comment('选项内容，当单选、多选时才需要次字段');
+            $table->string('content')->nullable()->comment('选项内容，当单选、多选时才需要此字段');
             $table->string('answer')->comment('问题的答案：填空与选择为准确答案，文章为参考答案');
             $table->integer('sort')->default(100);
             $table->timestamps();

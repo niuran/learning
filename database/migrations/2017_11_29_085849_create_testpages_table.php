@@ -17,6 +17,7 @@ class CreateTestpagesTable extends Migration
             $table->increments('id');
             $table->integer('userid')->comment('测试所属用户id');
             $table->string('name')->comment('测试的试卷名字');
+            $table->string('comment')->nullable()->comment('备注');
             $table->string('questions')->nullable()->comment('该测试所包含的所有问题ID数组，json表示');
             $table->integer('sort')->default(100);
             $table->timestamps();

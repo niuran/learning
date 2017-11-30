@@ -39,6 +39,10 @@
                         <input class="form-control" type="text" name="sort" value="{{ old('sort', $testpage->sort ) }}" placeholder="请填写排序，越小越靠前" required/>
                     </div>
 
+                    <div class="form-group">
+                        <textarea class="form-control" name="comment" rows="3" placeholder="备注">{{ old('comment', $testpage->comment ) }}</textarea>
+                    </div>
+
                     <div class="well well-sm">
                         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 保存</button>
                     </div>

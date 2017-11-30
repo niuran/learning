@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Questions extends Model
 {
     protected $fillable = [
-      'type', 'title', 'content', 'answer', 'sort',
+      'userid', 'type', 'title', 'content', 'answer', 'sort',
     ];
 
     public function testpages()

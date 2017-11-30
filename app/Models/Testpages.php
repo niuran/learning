@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Testpages extends Model
 {
     protected $fillable = [
-      'userid', 'name', 'question_ids', 'sort',
+      'userid', 'name', 'question_ids', 'sort', 'comment',
     ];
 
     public function user()

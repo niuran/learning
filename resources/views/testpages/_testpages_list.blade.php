@@ -18,8 +18,13 @@
           <td>{{ $testpage->name }}</td>
           <td>{{ $testpage->sort }}</td>
           <td>
-            <a href="{{ route('testpages.edit', $testpage->id) }}">编辑</a>
-            <a href="{{ route('testpages.destroy', $testpage->id) }}">删除</a>
+            <form action="{{ route('testpages.destroy', $testpage->id) }}" method="post">
+                  {{ csrf_field() }}
+                  {{ method_field('DELETE') }}
+                  <a class="btn btn-primary btn-xs" href="{{ route('testpages.edit', $testpage->id) }}">编辑</a>
+                  <a class="btn btn-success btn-xs" href="#">管理试题</a>
+                  <button type="submit" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i>删除</button>
+            </form>
           </td>
         </tr>
         @endforeach

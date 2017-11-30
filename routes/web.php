@@ -18,3 +18,4 @@ Auth::routes();
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 
 Route::resource('testpages', 'TestpagesController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('questions', 'QuestionsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
