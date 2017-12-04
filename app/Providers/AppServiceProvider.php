@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Questions;
+use App\Observes\QuestionsObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         \Carbon\Carbon::setLocale('zh');
+        //Questions::observe(QuestionsObserver::class);
     }
 
     /**

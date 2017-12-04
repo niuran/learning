@@ -2,6 +2,71 @@
 
 @section('script-include')
 <script src="/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var type = 'text';
+    var count = 0
+    $(document).ready(function(){
+        
+        var question = "{{ $question->type }}";
+        @if($question->type == 'radio')
+            var question_num = {{ count($question->content) }};
+            count = {{ count($question->content) }};
+            type = 'setted';
+            var question_content=new Array();
+            @php
+            foreach($question->content as $key => $content)
+            {
+                echo 'question_content[' . ($key+1) . ']="'.$content.'";';
+            }
+            @endphp
+            
+            var answer = {{ $question->answer }};
+            $('.operating').show();
+            $('#textanswer').hide();
+            for (var i=1;i<=question_num;i++)
+            {
+                $('#answer').append('<div class="input-group"><div class="input-group-addon">选项' + i + '<\/div><input type="text" class="form-control form-filter" name="content[]" value="' + question_content[i] + '" ><input type="radio" name="answer" value="' + i + '">设为正确答案<\/div>');
+            }
+            $(":radio[name='answer'][value='" + answer + "']").attr("checked","checked");
+        @elseif ($question->type == 'checkbox')
+            var question_num = {{ count($question->content) }};
+            var answer_num = {{ count($question->answer) }};
+            count = {{ count($question->content) }};
+            type = 'setted';
+            var question_content=new Array();
+            @php
+            if ($question->type == 'checkbox') {
+                foreach($question->content as $key => $content)
+                {
+                    echo 'question_content[' . ($key+1) . ']="'.$content.'";';
+                }
+            }
+            @endphp
+            $('.operating').show();
+            $('#textanswer').hide();
+            var answer = new Array();
+            @php
+            if ($question->type == 'checkbox') {
+                foreach($question->answer as $key => $content)
+                {
+                    echo 'answer[' . ($key+1) . ']="'.$content.'";';
+                }
+            }
+            @endphp
+            
+            for (var i=1;i<=question_num;i++)
+            {
+                $('#answer').append('<div class="input-group"><div class="input-group-addon">选项' + i + '<\/div><input type="text" class="form-control form-filter" name="content[]" value="' + question_content[i] + '" ><input type="checkbox" name="answer[]" value="' + i + '">设为正确答案<\/div>');
+            }
+            for (var i=1;i<=answer_num;i++)
+            {
+                $(":checkbox[name='answer[]'][value='" + answer[i] + "']").attr("checked","checked");
+            }
+            
+        @endif
+
+    });
+</script>
 @endsection
 
 @section('content')
@@ -93,8 +158,7 @@
 
 @section('script')
 <script>
-var type = 'text';
-var count = 0;
+
 $('#type').on('change', function () {
     type = $(this).val();
     answer_write();
@@ -114,6 +178,9 @@ function answer_write() {
         $('.operating').show();
         $('#textanswer').hide();
         count = 2;
+    } else if (type == 'setted') {
+        $('.operating').show();
+        $('#textanswer').hide();
     } else {
         count = 0;
         $('.operating').hide();
@@ -133,6 +200,7 @@ $('.item_add').on('click', function () {
 });
 
 $('.item_remove').on('click', function () {
+    // alert(count);
     if (count > 2) {
       $('.input-group').eq(count - 1).remove();
       count --;

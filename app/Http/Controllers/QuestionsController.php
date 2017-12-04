@@ -45,13 +45,29 @@ class QuestionsController extends Controller
       if($question->type == 'text' || $question->type == 'textarea') {
         $question->textanswer = $question->answer;
       }
-        return view('questions.create_and_edit', compact('question'));
+      if($question->type == 'radio') {
+        $question->content = json_decode($question->content, true);
+      }
+      if($question->type == 'checkbox') {
+        $question->content = json_decode($question->content, true);
+        $question->answer = json_decode($question->answer, true);
+      }
+      // dd($question);
+      return view('questions.create_and_edit', compact('question'));
   }
 
   public function update(Request $request, Questions $question)
   {
-    $question->update($request->all());
-
+        $question->fill($request->all());
+        $question->content = json_encode($request->content);
+        if($question->type == 'checkbox'){
+          $question->answer = json_encode($request->answer);
+        }
+        if($question->type == 'text' || $question->type == 'textarea') {
+          $question->answer = $request->textanswer;
+        }
+        // dd($question);
+        $question->save();
     return redirect()->route('questions.index')->with('message', '更新成功！');
   }
 
