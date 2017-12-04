@@ -66,12 +66,12 @@
 
 
 
-                    <div class="form-group" >
-                        <input class="form-control" type="text" name="textanswer" value="{{ old('textanswer', $question->textanswer ) }}" placeholder="请填写答案" required/>
+                    <div class="form-group" id="textanswer">
+                        <input class="form-control" type="text" name="textanswer" value="{{ old('textanswer', $question->textanswer ) }}" placeholder="请填写答案"/>
                     </div>
 
                     <div class="form-group">
-                        <input class="form-control" type="text" name="sort" value="{{ old('sort', $question->sort ) }}" placeholder="请填写排序，越小越靠前" required/>
+                        <input class="form-control" type="text" name="sort" value="{{ old('sort', $question->sort ) }}" placeholder="请填写排序，越小越靠前"/>
                     </div>
 
                     <div class="well well-sm">
@@ -105,16 +105,19 @@ answer_write();
 function answer_write() {
     var str = '';
     if (type == 'radio') {
-        str = '<div class="input-group"><div class="input-group-addon">选项1<\/div><input type="text" class="form-control form-filter" name="content[]" value="" ><input type="radio" name="answer" value="0">设为正确答案<\/div><div class="input-group"><div class="input-group-addon">选项2<\/div><input type="text" class="form-control form-filter" name="content[]" value="" ><input type="radio" name="answer" value="1">设为正确答案<\/div>'
+        str = '<div class="input-group"><div class="input-group-addon">选项1<\/div><input type="text" class="form-control form-filter" name="content[]" value="" ><input type="radio" name="answer" value="1">设为正确答案<\/div><div class="input-group"><div class="input-group-addon">选项2<\/div><input type="text" class="form-control form-filter" name="content[]" value="" ><input type="radio" name="answer" value="2">设为正确答案<\/div>'
         $('.operating').show();
+        $('#textanswer').hide();
         count = 2;
     } else if (type == 'checkbox') {
-        str = '<div class="input-group"><div class="input-group-addon">选项1<\/div><input type="text" class="form-control form-filter" name="content[]" value="" ><input type="checkbox" name="answer[]" value="0">设为正确答案<\/div><div class="input-group"><div class="input-group-addon">选项2<\/div><input type="text" class="form-control form-filter" name="content[]" value="" ><input type="checkbox" name="answer" value="1">设为正确答案<\/div>'
+        str = '<div class="input-group"><div class="input-group-addon">选项1<\/div><input type="text" class="form-control form-filter" name="content[]" value="" ><input type="checkbox" name="answer[]" value="1">设为正确答案<\/div><div class="input-group"><div class="input-group-addon">选项2<\/div><input type="text" class="form-control form-filter" name="content[]" value="" ><input type="checkbox" name="answer[]" value="2">设为正确答案<\/div>'
         $('.operating').show();
+        $('#textanswer').hide();
         count = 2;
     } else {
         count = 0;
         $('.operating').hide();
+        $('#textanswer').show();
     }
     $('#answer').html(str);
 }
@@ -122,9 +125,9 @@ function answer_write() {
 // 添加一项
 $('.item_add').on('click', function () {
     if (type == 'radio') {
-      $('#answer').append('<div class="input-group"><div class="input-group-addon">选项' + (count + 1) + '<\/div><input type="text" class="form-control form-filter" name="content[]" value="" ><input type="radio" name="answer" value="' + count + '">设为正确答案<\/div>');
+      $('#answer').append('<div class="input-group"><div class="input-group-addon">选项' + (count + 1) + '<\/div><input type="text" class="form-control form-filter" name="content[]" value="" ><input type="radio" name="answer" value="' + (count + 1) + '">设为正确答案<\/div>');
     } else{
-      $('#answer').append('<div class="input-group"><div class="input-group-addon">选项' + (count + 1) + '<\/div><input type="text" class="form-control form-filter" name="content[]" value="" ><input type="checkbox" name="answer[]" value="' + count + '">设为正确答案<\/div>');
+      $('#answer').append('<div class="input-group"><div class="input-group-addon">选项' + (count + 1) + '<\/div><input type="text" class="form-control form-filter" name="content[]" value="" ><input type="checkbox" name="answer[]" value="' + (count + 1) + '">设为正确答案<\/div>');
     }
     count += 1;
 });

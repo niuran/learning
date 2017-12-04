@@ -10,7 +10,6 @@
           <th>选项</th>
           <th>答案</th>
           <th>排序</th>
-          <th>操作</th>
         </tr>
       </thead>
       <tbody>
@@ -48,14 +47,6 @@
             {{ $question->answer }}
           </td>
           <td>{{ $question->sort }}</td>
-          <td>
-            <form action="{{ route('questions.destroy', $question->id) }}" method="post">
-                  {{ csrf_field() }}
-                  {{ method_field('DELETE') }}
-                  <a class="btn btn-primary btn-xs" href="{{ route('questions.edit', $question->id) }}">编辑</a>
-                  <button type="submit" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i>删除</button>
-            </form>
-          </td>
         </tr>
         @endforeach
       </tbody>

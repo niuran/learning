@@ -19,3 +19,7 @@ Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit'
 
 Route::resource('testpages', 'TestpagesController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::resource('questions', 'QuestionsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
+// Route::resource('testquestions', 'TestquestionsController', ['only' => ['index', 'update', 'edit', 'destroy']]);
+Route::get('/testquestions/index/{id}', 'TestquestionsController@index')->name('testquestions.index');
+Route::post('/testquestions/edithandle/{id}', 'TestquestionsController@edithandle')->name('testquestions.edithandle');
+Route::get('/testquestions/edit/{id}', 'TestquestionsController@edit')->name('testquestions.edit');

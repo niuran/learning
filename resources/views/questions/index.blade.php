@@ -5,6 +5,16 @@
 @section('content')
 
 <div class="row">
+    <div class="col-lg-3 col-md-3 sidebar">
+      <div class="panel panel-default">
+        <div class="panel-body">
+            <a href="{{ route('questions.create') }}" class="btn btn-success btn-block" aria-label="Left Align">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 新建题目
+            </a>
+        </div>
+      </div>
+    </div>
+    
     <div class="col-lg-9 col-md-9 questions-list">
 
         <div class="panel panel-default">
@@ -22,15 +32,6 @@
         </div>
     </div>
 
-    <div class="col-lg-3 col-md-3 sidebar">
-      <div class="panel panel-default">
-        <div class="panel-body">
-            <a href="{{ route('questions.create') }}" class="btn btn-success btn-block" aria-label="Left Align">
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 新建题目
-            </a>
-        </div>
-      </div>
-    </div>
 </div>
 
 @endsection
