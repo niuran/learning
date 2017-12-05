@@ -8,9 +8,17 @@
     <div class="col-lg-3 col-md-3 sidebar">
       <div class="panel panel-default">
         <div class="panel-body">
-            <a href="{{ route('testquestions.edit', $testpage->id) }}" class="btn btn-success btn-block" aria-label="Left Align">
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 试题编辑
-            </a>
+            <div class="row">
+                <a href="{{ route('testquestions.edit', $testpage->id) }}" class="btn btn-success btn-block" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 试题编辑
+                </a>
+            </div>
+            
+            <div class="row" style="margin-top: 10px;">
+                <a  href="{{ route('testpages.show', $testpage->id) }}" class="btn btn-primary btn-block" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span>开始测试
+                </a>
+            </div>
         </div>
       </div>
     </div>
@@ -27,8 +35,6 @@
                 {{-- 试题列表 --}}
                 @include('testquestions._testquestions_list', ['questions' => $questions])
                 {{-- 分页 --}}
-                
-                
             </div>
         </div>
     </div>

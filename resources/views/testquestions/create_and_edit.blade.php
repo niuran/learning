@@ -83,7 +83,7 @@
     </div>
 </form>
 @else
-暂无题目，请先添加题目
+暂无题目，请先 <a href="{{ route('questions.create') }}" class="btn btn-success">添加题目</a> 
 @endif
 
             </div>

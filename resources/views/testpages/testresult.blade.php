@@ -68,7 +68,7 @@
 		  @foreach($user_choice[$question->id]['choice'] as $questionchoice)
 		      @if($questionchoice == ($loop->parent->index + 1))
 		      	@foreach($user_choice[$question->id]['answer'] as $answer)
-				  	@if($answer == ($loop->parent->index + 1))
+				  	@if($answer == ($loop->parent->parent->index + 1))
 				  		<span class="glyphicon glyphicon-ok" aria-hidden="true" style="color: green;">回答正确</span>
 		  				  @php
 						  $is_true = 1;

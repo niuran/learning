@@ -33,7 +33,12 @@ class QuestionsController extends Controller
           $question->answer = json_encode($request->answer);
         }
         if($question->type == 'text' || $question->type == 'textarea') {
-          $question->answer = $request->textanswer;
+          if ($request->testanswer){
+            $question->answer = $request->textanswer;
+          } else {
+            $question->answer = '无';
+          }
+          
         }
         // dd($question);
         $question->save();
