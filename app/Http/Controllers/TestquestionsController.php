@@ -19,9 +19,12 @@ class TestquestionsController extends Controller
         $testpage = Testpages::where('id', $id)->first();
         $question_ids = json_decode($testpage['questions'], true);
         $questions = array();
-        foreach ($question_ids as $key => $value) {
-          $questions[] = Questions::where('id', $value)->first();
+        if($question_ids){
+          foreach ($question_ids as $key => $value) {
+            $questions[] = Questions::where('id', $value)->first();
+          }
         }
+        
         // dd($questions);
         return view('testquestions.index', compact('testpage', 'questions'));
     }
@@ -30,8 +33,13 @@ class TestquestionsController extends Controller
   {
         $testpage = Testpages::where('id', $id)->first();
         $questions_choice = json_decode($testpage['questions'], true);
+        if ($questions_choice) {
+          $initial = 1;
+        } else {
+          $initial = 0;
+        }
         $questions = Questions::orderBy('sort')->get();
-        return view('testquestions.create_and_edit', compact('testpage', 'questions', 'questions_choice'));
+        return view('testquestions.create_and_edit', compact('testpage', 'questions', 'questions_choice', 'initial'));
   }
 
   public function edithandle(Request $request)

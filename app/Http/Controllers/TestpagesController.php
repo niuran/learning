@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Testpages;
 use App\Models\Questions;
+use App\Http\Requests\TestpageRequest;
 use Auth;
 
 class TestpagesController extends Controller
@@ -25,7 +26,7 @@ class TestpagesController extends Controller
     return view('testpages.create_and_edit', compact('testpage'));
   }
 
-  public function store(Request $request, Testpages $testpage)
+  public function store(TestpageRequest $request, Testpages $testpage)
   {
         $testpage->fill($request->all());
         // dd($testpage);
@@ -39,7 +40,7 @@ class TestpagesController extends Controller
         return view('testpages.create_and_edit', compact('testpage'));
   }
 
-  public function update(Request $request, Testpages $testpage)
+  public function update(TestpageRequest $request, Testpages $testpage)
   {
     $testpage->update($request->all());
 
@@ -73,7 +74,7 @@ class TestpagesController extends Controller
     return view('testpages.show', compact('testpage'));
   }
 
-  public function testhandle(Request $request, $id)
+  public function testhandle(TestpageRequest $request, $id)
   {
     $testpage = testpages::where('id', $id)->first();
     // dd($testpage);

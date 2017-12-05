@@ -34,7 +34,11 @@
         <tr>
           <th scope="row">
             {{ $loop->index }}
-              <input type="checkbox" name="choice[]" value="{{ $question->id }}" @if(in_array($question->id, $questions_choice)) checked @endif>
+              @if($initial == 1)
+              <input type="checkbox" name="choice[]" value="{{ $question->id }}" @if(in_array($question->id, $questions_choice)) checked @endif >
+              @else
+              <input type="checkbox" name="choice[]" value="{{ $question->id }}" >
+              @endif
           </th>
           <td>{{ $question->userid }}</td>
           <td>

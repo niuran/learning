@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Questions;
+use App\Http\Requests\QuestionRequest;
 use Auth;
 
 class QuestionsController extends Controller
@@ -24,7 +25,7 @@ class QuestionsController extends Controller
     return view('questions.create_and_edit', compact('question'));
   }
 
-  public function store(Request $request, Questions $question)
+  public function store(QuestionRequest $request, Questions $question)
   {
         $question->fill($request->all());
         $question->content = json_encode($request->content);
@@ -56,7 +57,7 @@ class QuestionsController extends Controller
       return view('questions.create_and_edit', compact('question'));
   }
 
-  public function update(Request $request, Questions $question)
+  public function update(QuestionRequest $request, Questions $question)
   {
         $question->fill($request->all());
         $question->content = json_encode($request->content);
