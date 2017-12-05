@@ -38,7 +38,7 @@ class TestquestionsController extends Controller
         } else {
           $initial = 0;
         }
-        $questions = Questions::orderBy('sort')->get();
+        $questions = Questions::where('userid', Auth::id())->orderBy('sort')->get();
         return view('testquestions.create_and_edit', compact('testpage', 'questions', 'questions_choice', 'initial'));
   }
 

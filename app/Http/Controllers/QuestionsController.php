@@ -16,7 +16,7 @@ class QuestionsController extends Controller
 
     public function index(Questions $question)
     {
-        $questions = $question->orderBy('sort')->paginate(20);
+        $questions = $question->where('userid', Auth::id())->orderBy('sort')->paginate(20);
         return view('questions.index', compact('questions'));
     }
 

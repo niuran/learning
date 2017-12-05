@@ -136,7 +136,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input class="form-control" type="text" name="sort" value="{{ old('sort', $question->sort ) }}" placeholder="请填写排序，越小越靠前"/>
+                        <input class="form-control" type="text" name="sort" value="{{ old('sort', $question->sort ) }}" placeholder=题目编号，整数，越小越靠前"/>
                     </div>
 
                     <div class="well well-sm">

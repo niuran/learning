@@ -17,7 +17,7 @@ class TestpagesController extends Controller
 
     public function index(Testpages $testpage)
     {
-        $testpages = $testpage->orderBy('sort')->paginate(20);
+        $testpages = $testpage->where('userid', Auth::id())->orderBy('sort')->paginate(20);
         return view('testpages.index', compact('testpages'));
     }
 
@@ -74,7 +74,7 @@ class TestpagesController extends Controller
     return view('testpages.show', compact('testpage'));
   }
 
-  public function testhandle(TestpageRequest $request, $id)
+  public function testhandle(Request $request, $id)
   {
     $testpage = testpages::where('id', $id)->first();
     // dd($testpage);

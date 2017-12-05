@@ -36,7 +36,7 @@
                     <input type="hidden" name="userid" value="{{ Auth::id() }}">
 
                     <div class="form-group">
-                        <input class="form-control" type="text" name="sort" value="{{ old('sort', $testpage->sort ) }}" placeholder="请填写排序，越小越靠前"/>
+                        <input class="form-control" type="text" name="sort" value="{{ old('sort', $testpage->sort ) }}" placeholder="整数，越小显示越靠前"/>
                     </div>
 
                     <div class="form-group">

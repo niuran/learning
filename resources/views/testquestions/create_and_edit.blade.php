@@ -14,6 +14,7 @@
 
                 <hr>
 
+@if(count($questions))
 <form action="{{ route('testquestions.edithandle', $testpage->id) }}" method="POST" accept-charset="UTF-8">
     {{ csrf_field() }}
     <input type="hidden" name="id" value="{{ $testpage->id }}">
@@ -81,6 +82,9 @@
         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 保存</button>
     </div>
 </form>
+@else
+暂无题目，请先添加题目
+@endif
 
             </div>
         </div>
