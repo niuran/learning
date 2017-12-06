@@ -12,7 +12,12 @@
                     <i class="glyphicon glyphicon-edit"></i>
                     {{ $testpage->name }}
                 </h2>
-
+                <p>
+                	<span class="glyphicon glyphicon-question-sign">试卷备注：</span>{{ $testpage->comment }}
+                </p>
+                <p style="color: red;">
+                	注：单选及多选题为必填项。
+                </p>
                 <hr>
 
                 @include('common.error')
@@ -51,8 +56,7 @@
 				          @break
 				        @case('textarea')
 			          	  请作答：
-			          	  		<textarea  class="" name="{{$question->id}}" rows="10" cols="30">
-								</textarea>
+			          	  		<textarea  class="" name="{{$question->id}}" rows="10" cols="30"></textarea>
 				          @break
 				        @default
 				        	请填写：

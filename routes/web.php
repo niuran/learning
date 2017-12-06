@@ -18,8 +18,11 @@ Auth::routes();
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 
 Route::resource('testpages', 'TestpagesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
 Route::post('/testpages/testhandle/{id}', 'TestpagesController@testhandle')->name('testpages.testhandle');
 Route::resource('questions', 'QuestionsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::resource('history', 'HistoryController', ['only' => ['index', 'show', 'destroy']]);
 
 Route::get('/testquestions/index/{id}', 'TestquestionsController@index')->name('testquestions.index');
 Route::post('/testquestions/edithandle/{id}', 'TestquestionsController@edithandle')->name('testquestions.edithandle');

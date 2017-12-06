@@ -52,8 +52,8 @@
             <form action="{{ route('questions.destroy', $question->id) }}" method="post">
                   {{ csrf_field() }}
                   {{ method_field('DELETE') }}
-                  <a class="btn btn-primary btn-xs" href="{{ route('questions.edit', $question->id) }}">编辑</a>
-                  <button type="submit" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i>删除</button>
+                  <a class="btn btn-primary" href="{{ route('questions.edit', $question->id) }}">编辑</a>
+                  <button onclick="return confirm('确定删除？')" type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>删除</button>
             </form>
           </td>
         </tr>
